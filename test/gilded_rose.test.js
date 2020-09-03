@@ -131,12 +131,12 @@ describe('update_quality', () => {
       expect(testItems[0].quality).toEqual(21);
     })
 
-    // it('allow sell_in prop to decrement below 0', () => {
-    //   const item = new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20);
-    //   testItems.push(item)
-    //   update_quality(testItems);
-    //   expect(testItems[0].sell_in).toEqual(-1);
-    // })
+    it('should increment quality by 3 when sell_in <= 5', () => {
+      const item = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 20);
+      testItems.push(item)
+      update_quality(testItems);
+      expect(testItems[0].quality).toEqual(23);
+    })
 
     // it('quality is capped at 50', () => {
     //   const item = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 50);
