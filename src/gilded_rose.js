@@ -68,6 +68,10 @@ const updateItemSellIn = (item) => {
   } else {
     item.sell_in = item.sell_in - 1;
   }
+  updateItemNegativeSellIn(item)
+}
+
+const updateItemNegativeSellIn = (item) => {
   if (item.sell_in < 0) {
     if (isBrie(item)) {
       if (item.quality < 50) {
