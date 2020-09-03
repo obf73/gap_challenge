@@ -18,35 +18,35 @@ describe('update_quality', () => {
     })
 
     it('should decrement sell_in prop by 1', () => {
-      const item = new Item('normal', 10, 20);
+      const item = new Item('Normal Item', 10, 20);
       testItems.push(item);
       update_quality(testItems);
       expect(testItems[0].sell_in).toEqual(9);
     })
 
     it('should decrement quality prop by 1', () => {
-      const item = new Item('normal', 10, 20);
+      const item = new Item('Normal Item', 10, 20);
       testItems.push(item)
       update_quality(testItems);
       expect(testItems[0].quality).toEqual(19);
     })
 
     it('allow sell_in prop to decrement below 0', () => {
-      const item = new Item('normal', 0, 20);
+      const item = new Item('Normal Item', 0, 20);
       testItems.push(item)
       update_quality(testItems);
       expect(testItems[0].sell_in).toEqual(-1);
     })
 
     it('decrement quality 2x as fast after sell_in reaches 0', () => {
-      const item = new Item('normal', 0, 20);
+      const item = new Item('Normal Item', 0, 20);
       testItems.push(item)
       update_quality(testItems);
       expect(testItems[0].quality).toEqual(18);
     })
 
     it('never allows negative quality', () => {
-      const item = new Item('normal', 10, 0);
+      const item = new Item('Normal Item', 10, 0);
       testItems.push(item)
       update_quality(testItems);
       expect(testItems[0].quality).toEqual(0);
@@ -109,16 +109,37 @@ describe('update_quality', () => {
       update_quality(testItems);
       expect(testItems[0].quality).toEqual(20);
     })
+  })
+
+  describe('Backstage passes to a TAFKAL80ETC concert', () => {
+
+    afterEach(() => {
+      testItems = []
+    })
+
+    it('should decrement sell_in prop by 1', () => {
+      const item = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20);
+      testItems.push(item);
+      update_quality(testItems);
+      expect(testItems[0].sell_in).toEqual(9);
+    })
+
+    // it('should increment quality prop by 1', () => {
+    //   const item = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 20);
+    //   testItems.push(item)
+    //   update_quality(testItems);
+    //   expect(testItems[0].quality).toEqual(21);
+    // })
 
     // it('allow sell_in prop to decrement below 0', () => {
-    //   const item = new Item('Sulfuras, Hand of Ragnaros', 0, 20);
+    //   const item = new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20);
     //   testItems.push(item)
     //   update_quality(testItems);
     //   expect(testItems[0].sell_in).toEqual(-1);
     // })
 
     // it('quality is capped at 50', () => {
-    //   const item = new Item('Sulfuras, Hand of Ragnaros', 10, 50);
+    //   const item = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 50);
     //   testItems.push(item)
     //   update_quality(testItems);
     //   expect(testItems[0].quality).toEqual(50);
