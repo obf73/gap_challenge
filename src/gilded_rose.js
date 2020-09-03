@@ -29,7 +29,7 @@ const determineAction = (item) => {
   let itemName = item.name
   switch(itemName) {
     case AGED_BRIE:
-    agedBrieAction(item);
+      agedBrieAction(item);
       break;
     case BACKSTAGE:
       backstageAction(item);
