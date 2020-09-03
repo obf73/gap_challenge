@@ -31,5 +31,12 @@ describe('update_quality', () => {
       expect(testItems[0].quality).toEqual(19);
     })
 
+    it('allow sell_in prop to decrement below 0', () => {
+      const item = new Item('normal', 0, 20);
+      testItems.push(item)
+      update_quality(testItems);
+      expect(testItems[0].sell_in).toEqual(-1);
+    })
+
   })
 })
