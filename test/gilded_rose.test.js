@@ -103,12 +103,12 @@ describe('update_quality', () => {
       expect(testItems[0].sell_in).toEqual(10);
     })
 
-    // it('should increment quality prop by 1', () => {
-    //   const item = new Item('Sulfuras, Hand of Ragnaros', 10, 20);
-    //   testItems.push(item)
-    //   update_quality(testItems);
-    //   expect(testItems[0].quality).toEqual(21);
-    // })
+    it('should never change quality prop', () => {
+      const item = new Item('Sulfuras, Hand of Ragnaros', 10, 20);
+      testItems.push(item)
+      update_quality(testItems);
+      expect(testItems[0].quality).toEqual(20);
+    })
 
     // it('allow sell_in prop to decrement below 0', () => {
     //   const item = new Item('Sulfuras, Hand of Ragnaros', 0, 20);
