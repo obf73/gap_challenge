@@ -55,41 +55,20 @@ const determineAction = (item) => {
         updateBackstagePassSpecial(item)
       }
       break;
+    case 'Sulfuras, Hand of Ragnaros':
+
+      break
+    case 'Conjured Mana Cake':
+      item.quality = item.quality - 1;
     default:
       if (item.quality > 0) {
-        if (isSulfuras(item)) {
-  
-        } else {
-          item.quality = item.quality - 1
-          if(isConjured(item)) {
-            item.quality = item.quality - 1;
-          }
-        }
+        item.quality = item.quality - 1
       }
   }
 }
 
 const updateItemQuality = (item) => {
   determineAction(item);
-  // if (isBrie(item) || isBackstage(item)) {
-  //   if (item.quality < 50) {
-  //     item.quality = item.quality + 1
-  //     if (isBackstage(item)) {
-  //       updateBackstagePassSpecial(item)
-  //     }
-  //   }
-  // } else {
-    // if (item.quality > 0) {
-    //   if (isSulfuras(item)) {
-
-    //   } else {
-    //     item.quality = item.quality - 1
-    //     if(isConjured(item)) {
-    //       item.quality = item.quality - 1;
-    //     }
-    //   }
-    // }
-  // }
 }
 
 const updateItemSellIn = (item) => {
