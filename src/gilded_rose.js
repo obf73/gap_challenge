@@ -72,7 +72,8 @@ const updateItemSellIn = (item) => {
     if (!isBrie(item)) {
       if (!isBackstage(item)) {
         if (item.quality > 0) {
-          if (!isSulfuras(item)) {
+          if (isSulfuras(item)) {
+          } else {
             item.quality = item.quality - 1
           }
         }
