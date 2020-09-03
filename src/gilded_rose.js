@@ -36,7 +36,15 @@ const determineAction = (item) => {
       break;
     case BACKSTAGE:
       if (item.quality < 50) {
-        updateBackstagePassSpecial(item)
+        if (item.sell_in <= 10) {
+          if (item.sell_in <= 5) {
+            item.quality = item.quality + 3
+          } else {
+            item.quality = item.quality + 2
+          }
+        } else {
+          item.quality = item.quality + 1
+        }
       }
       if(item.sell_in === 0) {
         item.quality = item.quality - item.quality
@@ -56,19 +64,4 @@ const determineAction = (item) => {
       }
       item.sell_in = item.sell_in - 1;
   }
-}
-
-const updateBackstagePassSpecial = (item) => {
-  if(item.quality < 50) {
-    if (item.sell_in <= 10) {
-      if (item.sell_in <= 5) {
-        item.quality = item.quality + 3
-        return 
-      } else {
-        item.quality = item.quality + 2
-        return
-      }
-    }
-  }
-  item.quality = item.quality + 1
 }
