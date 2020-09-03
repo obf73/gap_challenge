@@ -21,7 +21,7 @@ export const update_quality = (items) => {
 }
 
 const updateItem = (item) => {
-  updateItemQuality(item);
+  determineAction(item);
 }
 
 const determineAction = (item) => {
@@ -56,10 +56,6 @@ const determineAction = (item) => {
       }
       item.sell_in = item.sell_in - 1;
   }
-}
-
-const updateItemQuality = (item) => {
-  determineAction(item);
 }
 
 const updateBackstagePassSpecial = (item) => {
