@@ -45,5 +45,12 @@ describe('update_quality', () => {
       expect(testItems[0].quality).toEqual(18);
     })
 
+    it('never allows negative quality', () => {
+      const item = new Item('normal', 10, 0);
+      testItems.push(item)
+      update_quality(testItems);
+      expect(testItems[0].quality).toEqual(0);
+    })
+
   })
 })
