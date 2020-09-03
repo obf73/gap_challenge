@@ -41,26 +41,57 @@ const isConjured = (item) => {
  return item.name === 'Conjured Mana Cake'
 }
 
-const updateItemQuality = (item) => {
-  if (isBrie(item) || isBackstage(item)) {
-    if (item.quality < 50) {
-      item.quality = item.quality + 1
-      if (isBackstage(item)) {
-        updateBackstagePassSpecial(item)
+const determineAction = (item) => {
+  let itemName = item.name
+  switch(itemName) {
+    case 'Aged Brie':
+      if (item.quality < 50) {
+        item.quality = item.quality + 1
       }
-    }
-  } else {
-    if (item.quality > 0) {
-      if (isSulfuras(item)) {
-
-      } else {
-        item.quality = item.quality - 1
-        if(isConjured(item)) {
-          item.quality = item.quality - 1;
+      break;
+    case 'Backstage passes to a TAFKAL80ETC concert':
+      if (item.quality < 50) {
+        item.quality = item.quality + 1
+        if (isBackstage(item)) {
+          updateBackstagePassSpecial(item)
         }
       }
-    }
+      break;
+    default:
+      if (item.quality > 0) {
+        if (isSulfuras(item)) {
+  
+        } else {
+          item.quality = item.quality - 1
+          if(isConjured(item)) {
+            item.quality = item.quality - 1;
+          }
+        }
+      }
   }
+}
+
+const updateItemQuality = (item) => {
+  determineAction(item);
+  // if (isBrie(item) || isBackstage(item)) {
+  //   if (item.quality < 50) {
+  //     item.quality = item.quality + 1
+  //     if (isBackstage(item)) {
+  //       updateBackstagePassSpecial(item)
+  //     }
+  //   }
+  // } else {
+    // if (item.quality > 0) {
+    //   if (isSulfuras(item)) {
+
+    //   } else {
+    //     item.quality = item.quality - 1
+    //     if(isConjured(item)) {
+    //       item.quality = item.quality - 1;
+    //     }
+    //   }
+    // }
+  // }
 }
 
 const updateItemSellIn = (item) => {
