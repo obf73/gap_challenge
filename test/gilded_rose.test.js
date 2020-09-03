@@ -75,7 +75,7 @@ describe('update_quality', () => {
     })
 
     it('allow sell_in prop to decrement below 0', () => {
-      const item = new Item('normal', 0, 20);
+      const item = new Item('Aged Brie', 0, 20);
       testItems.push(item)
       update_quality(testItems);
       expect(testItems[0].sell_in).toEqual(-1);
@@ -89,4 +89,5 @@ describe('update_quality', () => {
     })
 
   })
+
 })
