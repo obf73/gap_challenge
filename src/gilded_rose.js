@@ -70,15 +70,15 @@ const updateItemSellIn = (item) => {
   }
   if (item.sell_in < 0) {
     if (!isBrie(item)) {
-      if (!isBackstage(item)) {
+      if (isBackstage(item)) {
+        item.quality = item.quality - item.quality
+      } else {
         if (item.quality > 0) {
           if (isSulfuras(item)) {
           } else {
             item.quality = item.quality - 1
           }
         }
-      } else {
-        item.quality = item.quality - item.quality
       }
     } else {
       if (item.quality < 50) {
