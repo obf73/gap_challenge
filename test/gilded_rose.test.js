@@ -74,12 +74,12 @@ describe('update_quality', () => {
       expect(testItems[0].quality).toEqual(21);
     })
 
-    // it('allow sell_in prop to decrement below 0', () => {
-    //   const item = new Item('Aged Brie', 0, 20);
-    //   testItems.push(item)
-    //   update_quality(testItems);
-    //   expect(testItems[0].sell_in).toEqual(-1);
-    // })
+    it('quality is capped at 50', () => {
+      const item = new Item('Aged Brie', 10, 50);
+      testItems.push(item)
+      update_quality(testItems);
+      expect(testItems[0].quality).toEqual(50);
+    })
 
     // it('decrement quality 2x as fast after sell_in reaches 0', () => {
     //   const item = new Item('Aged Brie', 0, 20);
