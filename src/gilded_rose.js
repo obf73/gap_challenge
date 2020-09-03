@@ -59,16 +59,15 @@ const determineAction = (item) => {
 }
 
 const updateBackstagePassSpecial = (item) => {
-  if (item.sell_in <= 5) {
-    if (item.quality < 50) {
-      item.quality = item.quality + 3
-      return 
-    }
-  }
-  if (item.sell_in <= 10) {
-    if (item.quality < 50) {
-      item.quality = item.quality + 2
-      return
+  if(item.quality < 50) {
+    if (item.sell_in <= 10) {
+      if (item.sell_in <= 5) {
+        item.quality = item.quality + 3
+        return 
+      } else {
+        item.quality = item.quality + 2
+        return
+      }
     }
   }
   item.quality = item.quality + 1
