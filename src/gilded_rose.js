@@ -48,11 +48,19 @@ const determineAction = (item) => {
       if (item.quality < 50) {
         item.quality = item.quality + 1
       }
+      // if (item.quality > 0) {
+      //   if (isSulfuras(item)) {
+      //   } else {
+      //     item.quality = item.quality - 1
+      //   }
+      // }
       break;
     case 'Backstage passes to a TAFKAL80ETC concert':
       if (item.quality < 50) {
-        item.quality = item.quality + 1
         updateBackstagePassSpecial(item)
+      }
+      if(item.sell_in === 0) {
+        item.quality = item.quality - item.quality
       }
       break;
     case 'Sulfuras, Hand of Ragnaros':
@@ -63,6 +71,9 @@ const determineAction = (item) => {
     default:
       if (item.quality > 0) {
         item.quality = item.quality - 1
+        if(item.sell_in <= 0) {
+          item.quality = item.quality - 1
+        }
       }
   }
 }
@@ -76,39 +87,20 @@ const updateItemSellIn = (item) => {
   } else {
     item.sell_in = item.sell_in - 1;
   }
-  updateItemNegativeSellIn(item)
-}
-
-const updateItemNegativeSellIn = (item) => {
-  if (item.sell_in < 0) {
-    if (isBrie(item)) {
-      if (item.quality < 50) {
-        item.quality = item.quality + 1
-      }
-    } else {
-      if (isBackstage(item)) {
-        item.quality = item.quality - item.quality
-      } else {
-        if (item.quality > 0) {
-          if (isSulfuras(item)) {
-          } else {
-            item.quality = item.quality - 1
-          }
-        }
-      }
-    }
-  }
 }
 
 const updateBackstagePassSpecial = (item) => {
-  if (item.sell_in < 11) {
+  if (item.sell_in <= 5) {
     if (item.quality < 50) {
-      item.quality = item.quality + 1
+      item.quality = item.quality + 3
+      return 
     }
   }
-  if (item.sell_in < 6) {
+  if (item.sell_in <= 10) {
     if (item.quality < 50) {
-      item.quality = item.quality + 1
+      item.quality = item.quality + 2
+      return
     }
   }
+  item.quality = item.quality + 1
 }
