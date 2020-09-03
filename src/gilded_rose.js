@@ -69,7 +69,11 @@ const updateItemSellIn = (item) => {
     item.sell_in = item.sell_in - 1;
   }
   if (item.sell_in < 0) {
-    if (!isBrie(item)) {
+    if (isBrie(item)) {
+      if (item.quality < 50) {
+        item.quality = item.quality + 1
+      }
+    } else {
       if (isBackstage(item)) {
         item.quality = item.quality - item.quality
       } else {
@@ -79,10 +83,6 @@ const updateItemSellIn = (item) => {
             item.quality = item.quality - 1
           }
         }
-      }
-    } else {
-      if (item.quality < 50) {
-        item.quality = item.quality + 1
       }
     }
   }
