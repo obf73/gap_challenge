@@ -52,9 +52,7 @@ const determineAction = (item) => {
     case 'Backstage passes to a TAFKAL80ETC concert':
       if (item.quality < 50) {
         item.quality = item.quality + 1
-        if (isBackstage(item)) {
-          updateBackstagePassSpecial(item)
-        }
+        updateBackstagePassSpecial(item)
       }
       break;
     default:
