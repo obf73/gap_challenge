@@ -22,23 +22,6 @@ export const update_quality = (items) => {
 
 const updateItem = (item) => {
   updateItemQuality(item);
-  updateItemSellIn(item);
-}
-
-const isBrie = (item) => {
-  return item.name ===  'Aged Brie'
-}
-
-const isBackstage = (item) => {
-  return item.name === 'Backstage passes to a TAFKAL80ETC concert'
-}
-
-const isSulfuras = (item) => {
-  return item.name === 'Sulfuras, Hand of Ragnaros'
-}
-
-const isConjured = (item) => {
- return item.name === 'Conjured Mana Cake'
 }
 
 const determineAction = (item) => {
@@ -48,12 +31,7 @@ const determineAction = (item) => {
       if (item.quality < 50) {
         item.quality = item.quality + 1
       }
-      // if (item.quality > 0) {
-      //   if (isSulfuras(item)) {
-      //   } else {
-      //     item.quality = item.quality - 1
-      //   }
-      // }
+      item.sell_in = item.sell_in - 1;
       break;
     case 'Backstage passes to a TAFKAL80ETC concert':
       if (item.quality < 50) {
@@ -62,6 +40,7 @@ const determineAction = (item) => {
       if(item.sell_in === 0) {
         item.quality = item.quality - item.quality
       }
+      item.sell_in = item.sell_in - 1;
       break;
     case 'Sulfuras, Hand of Ragnaros':
 
@@ -75,18 +54,12 @@ const determineAction = (item) => {
           item.quality = item.quality - 1
         }
       }
+      item.sell_in = item.sell_in - 1;
   }
 }
 
 const updateItemQuality = (item) => {
   determineAction(item);
-}
-
-const updateItemSellIn = (item) => {
-  if (isSulfuras(item)) {
-  } else {
-    item.sell_in = item.sell_in - 1;
-  }
 }
 
 const updateBackstagePassSpecial = (item) => {
