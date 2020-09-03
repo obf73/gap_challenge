@@ -145,13 +145,12 @@ describe('update_quality', () => {
       expect(testItems[0].quality).toEqual(23);
     })
 
-
-    // it('quality is capped at 50', () => {
-    //   const item = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 50);
-    //   testItems.push(item)
-    //   update_quality(testItems);
-    //   expect(testItems[0].quality).toEqual(50);
-    // })
+    it('quality drops to 0 after concert', () => {
+      const item = new Item('Backstage passes to a TAFKAL80ETC concert', 0, 50);
+      testItems.push(item)
+      update_quality(testItems);
+      expect(testItems[0].quality).toEqual(0);
+    })
 
   })
 
