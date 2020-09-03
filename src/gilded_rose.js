@@ -55,7 +55,8 @@ const updateItemQuality = (item) => {
 }
 
 const updateItemSellIn = (item) => {
-  if (item.name != 'Sulfuras, Hand of Ragnaros') {
+  if (item.name === 'Sulfuras, Hand of Ragnaros') {
+  } else {
     item.sell_in = item.sell_in - 1;
   }
   if (item.sell_in < 0) {
