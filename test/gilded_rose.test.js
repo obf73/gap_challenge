@@ -154,4 +154,47 @@ describe('update_quality', () => {
 
   })
 
+  describe('Conjured Mana Cake', () => {
+
+    afterEach(() => {
+      testItems = []
+    })
+
+    it('should decrement sell_in prop by 1', () => {
+      const item = new Item('Conjured Mana Cake', 10, 20);
+      testItems.push(item);
+      update_quality(testItems);
+      expect(testItems[0].sell_in).toEqual(9);
+    })
+
+    // it('should increment quality prop by 2', () => {
+    //   const item = new Item('Conjured Mana Cake', 11, 20);
+    //   testItems.push(item)
+    //   update_quality(testItems);
+    //   expect(testItems[0].quality).toEqual(18);
+    // })
+
+    // it('should increment quality by 2 when sell_in <= 10', () => {
+    //   const item = new Item('Conjured Mana Cake', 10, 20);
+    //   testItems.push(item)
+    //   update_quality(testItems);
+    //   expect(testItems[0].quality).toEqual(22);
+    // })
+
+    // it('should increment quality by 3 when sell_in <= 5', () => {
+    //   const item = new Item('Conjured Mana Cake', 5, 20);
+    //   testItems.push(item)
+    //   update_quality(testItems);
+    //   expect(testItems[0].quality).toEqual(23);
+    // })
+
+    // it('quality drops to 0 after concert', () => {
+    //   const item = new Item('Conjured Mana Cake', 0, 50);
+    //   testItems.push(item)
+    //   update_quality(testItems);
+    //   expect(testItems[0].quality).toEqual(0);
+    // })
+
+  })
+
 })
