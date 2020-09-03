@@ -167,12 +167,12 @@ describe('update_quality', () => {
       expect(testItems[0].sell_in).toEqual(9);
     })
 
-    // it('should increment quality prop by 2', () => {
-    //   const item = new Item('Conjured Mana Cake', 11, 20);
-    //   testItems.push(item)
-    //   update_quality(testItems);
-    //   expect(testItems[0].quality).toEqual(18);
-    // })
+    it('should decrement quality prop by 2', () => {
+      const item = new Item('Conjured Mana Cake', 10, 20);
+      testItems.push(item)
+      update_quality(testItems);
+      expect(testItems[0].quality).toEqual(18);
+    })
 
     // it('should increment quality by 2 when sell_in <= 10', () => {
     //   const item = new Item('Conjured Mana Cake', 10, 20);
