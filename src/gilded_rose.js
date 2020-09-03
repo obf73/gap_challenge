@@ -20,16 +20,21 @@ export const update_quality = (items) => {
   })
 }
 
+const AGED_BRIE = 'Aged Brie';
+const BACKSTAGE = 'Backstage passes to a TAFKAL80ETC concert';
+const SULFURAS = 'Sulfuras, Hand of Ragnaros';
+const CONJURED = 'Conjured Mana Cake';
+
 const determineAction = (item) => {
   let itemName = item.name
   switch(itemName) {
-    case 'Aged Brie':
+    case AGED_BRIE:
       if (item.quality < 50) {
         item.quality = item.quality + 1
       }
       item.sell_in = item.sell_in - 1;
       break;
-    case 'Backstage passes to a TAFKAL80ETC concert':
+    case BACKSTAGE:
       if (item.quality < 50) {
         updateBackstagePassSpecial(item)
       }
@@ -38,10 +43,9 @@ const determineAction = (item) => {
       }
       item.sell_in = item.sell_in - 1;
       break;
-    case 'Sulfuras, Hand of Ragnaros':
-
+    case SULFURAS:
       break
-    case 'Conjured Mana Cake':
+    case CONJURED:
       item.quality = item.quality - 1;
     default:
       if (item.quality > 0) {
