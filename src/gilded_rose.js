@@ -16,12 +16,8 @@ items.push(new Item('Conjured Mana Cake', 3, 6));
 
 export const update_quality = (items) => {
   items.forEach(item => {
-    updateItem(item);
+    determineAction(item);
   })
-}
-
-const updateItem = (item) => {
-  determineAction(item);
 }
 
 const determineAction = (item) => {
