@@ -25,21 +25,37 @@ const updateItem = (item) => {
   updateItemSellIn(item);
 }
 
+const isBrie = (item) => {
+  return item.name ===  'Aged Brie'
+}
+
+const isBackstage = (item) => {
+  return item.name === 'Backstage passes to a TAFKAL80ETC concert'
+}
+
+const isSulfuras = (item) => {
+  return item.name === 'Sulfuras, Hand of Ragnaros'
+}
+
+const isConjured = (item) => {
+ return item.name === 'Conjured Mana Cake'
+}
+
 const updateItemQuality = (item) => {
-  if (item.name === 'Aged Brie' || item.name === 'Backstage passes to a TAFKAL80ETC concert') {
+  if (isBrie(item) || isBackstage(item)) {
     if (item.quality < 50) {
       item.quality = item.quality + 1
-      if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
+      if (isBackstage(item)) {
         updateBackstagePassSpecial(item)
       }
     }
   } else {
     if (item.quality > 0) {
-      if (item.name === 'Sulfuras, Hand of Ragnaros') {
+      if (isSulfuras(item)) {
 
       } else {
         item.quality = item.quality - 1
-        if(item.name === 'Conjured Mana Cake') {
+        if(isConjured(item)) {
           item.quality = item.quality - 1;
         }
       }
@@ -47,21 +63,8 @@ const updateItemQuality = (item) => {
   }
 }
 
-const updateBackstagePassSpecial = (item) => {
-  if (item.sell_in < 11) {
-    if (item.quality < 50) {
-      item.quality = item.quality + 1
-    }
-  }
-  if (item.sell_in < 6) {
-    if (item.quality < 50) {
-      item.quality = item.quality + 1
-    }
-  }
-}
-
 const updateItemSellIn = (item) => {
-  if (item.name === 'Sulfuras, Hand of Ragnaros') {
+  if (isSulfuras(item)) {
   } else {
     item.sell_in = item.sell_in - 1;
   }
@@ -80,6 +83,19 @@ const updateItemSellIn = (item) => {
       if (item.quality < 50) {
         item.quality = item.quality + 1
       }
+    }
+  }
+}
+
+const updateBackstagePassSpecial = (item) => {
+  if (item.sell_in < 11) {
+    if (item.quality < 50) {
+      item.quality = item.quality + 1
+    }
+  }
+  if (item.sell_in < 6) {
+    if (item.quality < 50) {
+      item.quality = item.quality + 1
     }
   }
 }
